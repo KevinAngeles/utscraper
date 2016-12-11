@@ -38,7 +38,7 @@ $(document).on("click", "#savenote", function() {
 	// Run a POST request to change the note, using what's entered in the inputs
 	$.ajax({
 		method: "POST",
-		url: "/articles/" + thisId,
+		url: "/notes/" + thisId,
 		data: {
 			// Value taken from title input
 			body: bodyTxt
@@ -48,12 +48,9 @@ $(document).on("click", "#savenote", function() {
 	.done(function(data) {
 		// Log the response
 		console.log(data);
-		// Empty the notes section
-		//$("#notes").empty();
+		// Update the section
 		$("#bodyinput").val($("#bodyinput").val()+"<p>" + bodyTxt + "</p>");
 		// Also, remove the values entered in the input and textarea for note entry
 		$("#titleinput").val("");
-		//$("#bodyinput").val("");
 	});
-
 });

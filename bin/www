@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+// bring in the app exported from server.js
+var app = require('../server');
+
+// set the port of the app
+app.set('port', process.env.PORT || 3000);
+
+/* ERROR HANDLER */
+// =============
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// Listen on the selected port
+var server = app.listen(app.get('port'), function() {
+	console.log('Express server listening on port ' + server.address().port);
+});
